@@ -19,8 +19,17 @@ Si `version` es distinta de la del firmware actual, descarga el `firmware.bin` i
 
 ## Publicar nueva versión
 
-1. Compilar `firmware.bin`
-2. Crear release `vX.Y.Z` en GitHub
-3. Adjuntar `firmware.bin`
-4. Actualizar `manifest.json`
-5. Hacer push del manifest
+### Opción rápida
+
+```bash
+~/.platformio/penv/bin/pio run -e esp32-c3-devkitm-1
+./publish_ota.sh 0.1.2
+```
+
+### Qué hace el script
+
+1. toma `.pio/build/esp32-c3-devkitm-1/firmware.bin`
+2. copia `firmware.bin` al root del repo
+3. actualiza `manifest.json`
+4. hace commit y push
+5. crea o actualiza el release `vX.Y.Z`
